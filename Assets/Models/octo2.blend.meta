@@ -88,6 +88,32 @@ ModelImporter:
     100160: T2_R_001
     100162: T3_R_001
     100164: T4_R_001
+    100166: L1
+    100168: L2
+    100170: L3
+    100172: L4
+    100174: R1
+    100176: R2
+    100178: R3
+    100180: R4
+    100182: E
+    100184: I
+    100186: O
+    100188: P
+    100190: Q
+    100192: R
+    100194: U
+    100196: W
+    100198: Body
+    100200: Eyes
+    100202: Bone_E
+    100204: Bone_I
+    100206: Bone_O
+    100208: Bone_P
+    100210: Bone_Q
+    100212: Bone_R
+    100214: Bone_U
+    100216: Bone_W
     400000: //RootNode
     400002: Cylinder
     400004: Cylinder_001
@@ -171,6 +197,32 @@ ModelImporter:
     400160: T2_R_001
     400162: T3_R_001
     400164: T4_R_001
+    400166: L1
+    400168: L2
+    400170: L3
+    400172: L4
+    400174: R1
+    400176: R2
+    400178: R3
+    400180: R4
+    400182: E
+    400184: I
+    400186: O
+    400188: P
+    400190: Q
+    400192: R
+    400194: U
+    400196: W
+    400198: Body
+    400200: Eyes
+    400202: Bone_E
+    400204: Bone_I
+    400206: Bone_O
+    400208: Bone_P
+    400210: Bone_Q
+    400212: Bone_R
+    400214: Bone_U
+    400216: Bone_W
     2300000: //RootNode
     2300002: Cylinder
     2300004: Cylinder_001
@@ -179,11 +231,16 @@ ModelImporter:
     3300004: Cylinder_001
     4300000: Cylinder_001
     4300002: Cylinder
+    4300004: Eyes
+    4300006: Body
     7400000: Default Take
     7400002: ArmatureAction_002
+    7400004: Idle_001
     9500000: //RootNode
     13700000: Cylinder
     13700002: Cylinder_001
+    13700004: Body
+    13700006: Eyes
   materials:
     importMaterials: 1
     materialName: 0
@@ -207,7 +264,63 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_001
+      takeName: Idle_001
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
