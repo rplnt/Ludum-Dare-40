@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
     public bool paused;
     public float speed;
 
+    public int level;
+
     void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(this.gameObject);
