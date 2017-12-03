@@ -6,10 +6,24 @@ ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Chairs
+    100004: Cylinder
+    100006: Table
     400000: //RootNode
+    400002: Chairs
+    400004: Cylinder
+    400006: Table
     2300000: //RootNode
+    2300002: Chairs
+    2300004: Cylinder
+    2300006: Table
     3300000: //RootNode
+    3300002: Chairs
+    3300004: Cylinder
+    3300006: Table
     4300000: Table
+    4300002: Chairs
+    4300004: Cylinder
     7400000: Default Take
     9500000: //RootNode
   materials:

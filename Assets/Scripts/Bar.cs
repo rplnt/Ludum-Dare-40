@@ -28,6 +28,8 @@ public class Bar : MonoBehaviour {
         platter.transform.localPosition = Vector3.zero;
         platter.transform.localScale = Vector3.one;
 
+        platter.transform.localEulerAngles = new Vector3(45, 0, 0);
+
         return platter;
     }
 }

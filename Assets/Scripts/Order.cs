@@ -6,10 +6,11 @@ public class Order {
     public Transform Slot { get; private set; }
     public int TentacleId { get; private set; }
 
-    Transform _target;
+    WobblePlatters wobbler;
+
+    Transform _target = null;
     Transform _platter = null;
     Transform _stuff = null;
-
 
     public Transform Target { get { return _target; } }
     public bool HasPlatter { get { return _platter != null; } }
@@ -23,7 +24,8 @@ public class Order {
 
     public void AddPlatter(Transform platter) {
         Debug.Assert(!HasPlatter);
-
+        wobbler = platter.gameObject.GetComponent<WobblePlatters>();
+        wobbler.DroppedPlate += Dropped;
         _platter = platter;
     }
 
@@ -35,9 +37,13 @@ public class Order {
     }
 
     public GameObject UnloadOrder() {
-        Debug.Assert(PlatterFull);
+        if (!PlatterFull) {
+            Debug.Log("Already lost the order?");
+            return null;
+        }
         GameObject stuff = _stuff.gameObject;
 
+        wobbler.Stabilize();
 
         _target = null;
         _stuff = null;
@@ -54,6 +60,39 @@ public class Order {
         return _platter.Find("Slot");
     }
 
+    public bool Nudge() {
+        if (!HasPlatter) return false;
+        if (!PlatterFull) return false;
+        if (wobbler.falling) return false;
 
+        Debug.Log("Lost balance!");
+        wobbler.Nudge();
+        return true;
+    }
+
+
+    private void Dropped() {
+        if (PlatterFull) {
+            Rigidbody rb = _stuff.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            _stuff.SetParent(null);
+            _stuff = null;
+        }
+
+        if (HasPlatter) {
+            Rigidbody rb = _platter.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            _platter.SetParent(null);
+            _platter = null;
+        } else {
+            Debug.Log("No platter to drop?");
+        }
+
+        _target = null;
+
+        wobbler.DroppedPlate -= Dropped;
+        wobbler.enabled = false;
+        wobbler = null;
+    }
 
 }

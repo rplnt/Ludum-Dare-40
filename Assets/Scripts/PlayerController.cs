@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour {
     public float baseMoveSpeed;
     public float rotateSpeed;
 
+    [Header("Dropping")]
+    public int nudgeRetries;
+
     public System.Action<Transform> TargetReached;
 
 
@@ -33,7 +36,7 @@ public class PlayerController : MonoBehaviour {
                 targets.Add(child);
             }
         }
-        Debug.Log("Loaded " + nodes.Count + " checkpoints (" + targets.Count + " targets)");
+        Debug.Log("Loaded " + nodes.Count + " nodes (" + targets.Count + " targets)");
 
         // first should be bar
         bar = nodes[0].GetComponent<Bar>();
@@ -45,6 +48,14 @@ public class PlayerController : MonoBehaviour {
         foreach (Transform tentacle in tentacles) {
             orders.Add(new Order(tentacle, orders.Count));
         }
+
+        // shuffle orders
+        //for (int i=0; i < orders.Count; i++) {
+        //    int j = Random.Range(i, orders.Count);
+        //    Order swp = orders[i];
+        //    orders[i] = orders[j];
+        //    orders[j] = swp;
+        //}
 
         Debug.Log("Loaded " + orders.Count + " tentacle slots");
     }
@@ -59,16 +70,26 @@ public class PlayerController : MonoBehaviour {
 
         /* Reached Target */
         if (Vector3.Distance(transform.position, target.position) < 0.125f) {
+            Debug.Log("Changing target...");
             /* Load/Unload Platters */
             if (target.CompareTag("Respawn")) {
                 LoadPlatters();
             } else if (target.CompareTag("Target")) {
                 UnloadPlatters(target);
+            } else {
+                int retries = 0;
+
+                while (retries < nudgeRetries) {
+                    retries++;
+                    if (orders[Random.Range(0, orders.Count)].Nudge()) break;
+                }
+
             }
 
             /* Move to the next target */
             targetIndex++;
             targetIndex %= nodes.Count;
+            Debug.Log(targetIndex + ": " + nodes[targetIndex].name);
         }
     }
 
@@ -76,7 +97,7 @@ public class PlayerController : MonoBehaviour {
     private void RidePath(Transform target) {
 
         Vector3 direction = target.position - transform.position;
-        Debug.DrawRay(transform.position, direction, Color.red);
+        Debug.DrawRay(transform.position, direction, Color.yellow);
 
         /* Rotate */
         transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, direction, rotateSpeed * Time.deltaTime, 0.0f));
@@ -94,7 +115,9 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log("Level " + GameManager.Instance.level);
 
         for (int i = 0; i < GameManager.Instance.level; i++) {
-            Order current = orders[i];
+            Debug.Log("Loading tray " + i);
+            Order current = orders[i % orders.Count];
+            //Order current = orders[Random.Range(0, orders.Count) - 1];
             Debug.Assert(current.PlatterFull == false);
 
             /* Add platter if we don't have any */
@@ -105,7 +128,7 @@ public class PlayerController : MonoBehaviour {
 
             /* Load platter */
             GameObject stuff = bar.GiveOutStuff(current.GetPlatterSlot());
-            current.LoadOrder(targets[Random.Range(0, targets.Count - 1)], stuff.transform);
+            current.LoadOrder(targets[Random.Range(0, targets.Count)], stuff.transform);
         }
     }
 
@@ -116,6 +139,10 @@ public class PlayerController : MonoBehaviour {
                 // Reached target, unload platter
                 Debug.Log("Reached target " + currentStop.name + " with " + order.TentacleId);
                 GameObject currentOrder = order.UnloadOrder();
+
+                if (currentOrder == null) {
+                    continue;
+                }
                 Debug.Log(currentOrder.name);
                 Destroy(currentOrder);
             }

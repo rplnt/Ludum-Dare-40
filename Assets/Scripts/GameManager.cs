@@ -20,10 +20,8 @@ public class GameManager : MonoBehaviour {
 
         DontDestroyOnLoad(this.gameObject);
 
-        paused = true;
     }
 
     private void Start() {
-        paused = false;
     }
 }

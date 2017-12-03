@@ -74,6 +74,8 @@ ModelImporter:
     100132: T3_R_001
     100134: T4_R
     100136: T4_R_001
+    100138: Body
+    100140: Eyes
     400000: Armature
     400002: Base
     400004: Bone_001
@@ -143,7 +145,15 @@ ModelImporter:
     400132: T3_R_001
     400134: T4_R
     400136: T4_R_001
+    400138: Body
+    400140: Eyes
+    2300000: Body
+    2300002: Eyes
+    3300000: Body
+    3300002: Eyes
     4300000: Cylinder
+    4300002: Eyes
+    4300004: Body
     7400000: Default Take
     9500000: //RootNode
     13700000: Cylinder

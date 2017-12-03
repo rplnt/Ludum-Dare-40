@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4897032959082740}
   - component: {fileID: 54867354181194780}
+  - component: {fileID: 114637041984696336}
   m_Layer: 0
   m_Name: Platter
   m_TagString: Untagged
@@ -37,7 +38,6 @@ GameObject:
   - component: {fileID: 4323868638127042}
   - component: {fileID: 33792482679831502}
   - component: {fileID: 23154970430579524}
-  - component: {fileID: 95377962486564176}
   - component: {fileID: 64519299547871856}
   m_Layer: 0
   m_Name: Visuals
@@ -170,20 +170,22 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 86a860894dd2b574a9ae045a27488b73, type: 3}
---- !u!95 &95377962486564176
-Animator:
-  serializedVersion: 3
+--- !u!114 &114637041984696336
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844700635291606}
+  m_GameObject: {fileID: 1563332892241532}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 86a860894dd2b574a9ae045a27488b73, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65218fea9bca5904c9139a78309d8696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  baseLimit: 5
+  dropAngle: 35
+  falling: 0
+  fallingSpeedModifier: 1
+  correctionSpeed: 25
+  corrected: 0
+  dropped: 0
