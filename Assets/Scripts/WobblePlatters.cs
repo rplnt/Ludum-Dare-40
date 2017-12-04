@@ -14,7 +14,6 @@ public class WobblePlatters : MonoBehaviour {
     Order order;
     public float dropAngle;
     public bool falling;
-    public float fallingSpeedModifier;
     public float correctionSpeed;
     public bool corrected;
     public bool dropped;

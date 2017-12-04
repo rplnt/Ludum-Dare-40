@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4698864588485808}
   - component: {fileID: 33609034496747038}
   - component: {fileID: 23446152818260628}
-  - component: {fileID: 95873920800806868}
   - component: {fileID: 64993092974711230}
   m_Layer: 0
   m_Name: glass
@@ -142,20 +141,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c38f70e28c61adb4a84fe34378d6dccc, type: 3}
---- !u!95 &95873920800806868
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1498050461322740}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c38f70e28c61adb4a84fe34378d6dccc, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

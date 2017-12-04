@@ -70,12 +70,14 @@ public class PlayerController : MonoBehaviour {
 
         /* Reached Target */
         if (Vector3.Distance(transform.position, target.position) < 0.125f) {
-            Debug.Log("Changing target...");
             /* Load/Unload Platters */
             if (target.CompareTag("Respawn")) {
+                if (GameManager.Instance.level < orders.Count) {
+                    GameManager.Instance.level++;
+                }
                 LoadPlatters();
             } else if (target.CompareTag("Target")) {
-                UnloadPlatters(target);
+                GameManager.Instance.ScorePoints(UnloadPlatters(target));
             } else {
                 int retries = 0;
 
@@ -133,7 +135,8 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    private void UnloadPlatters(Transform currentStop) {
+    private int UnloadPlatters(Transform currentStop) {
+        int unloaded = 0;
         foreach (Order order in orders) {
             if (order.Target == currentStop) {
                 // Reached target, unload platter
@@ -143,10 +146,13 @@ public class PlayerController : MonoBehaviour {
                 if (currentOrder == null) {
                     continue;
                 }
+                unloaded++;
                 Debug.Log(currentOrder.name);
                 Destroy(currentOrder);
             }
         }
+
+        return unloaded;
     }
 
 }

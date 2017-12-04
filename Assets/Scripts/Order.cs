@@ -77,6 +77,9 @@ public class Order {
             rb.isKinematic = false;
             _stuff.SetParent(null);
             _stuff = null;
+
+            // GAME OVER
+            GameManager.Instance.GameOver();
         }
 
         if (HasPlatter) {
@@ -84,6 +87,10 @@ public class Order {
             rb.isKinematic = false;
             _platter.SetParent(null);
             _platter = null;
+
+
+            GameManager.Instance.ScorePoints(-1);
+
         } else {
             Debug.Log("No platter to drop?");
         }

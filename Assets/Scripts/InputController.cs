@@ -22,22 +22,31 @@ public class InputController : MonoBehaviour {
 
 
     private void Update() {
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.Keypad7)) {
+        if (GameManager.Instance.over) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
+            GameManager.Instance.paused = !GameManager.Instance.paused;
+            UIController.Instance.PauseMenu();
+        }
+
+        if (GameManager.Instance.paused) return;
+
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Keypad7)) {
             Activate("Q");
-        } else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Keypad8)) {
+        } else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Keypad8)) {
             Activate("W");
-        } else if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Keypad9)) {
+        } else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Keypad9)) {
             Activate("E");
-        } else if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.Keypad6)) {
+        } else if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Keypad6)) {
             Activate("R");
 
-        } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Keypad4)) {
+        } else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4)) {
             Activate("A");
-        } else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.Keypad1)) {
+        } else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad1)) {
             Activate("S");
-        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Keypad2)) {
+        } else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad2)) {
             Activate("D");
-        } else if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Keypad3)) {
+        } else if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Keypad3)) {
             Activate("F");
         }
 
